@@ -1,0 +1,4 @@
+[core]
+    remote = lokalny
+['remote "lokalny"']
+    url = C:\dvc-store
