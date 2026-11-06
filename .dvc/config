@@ -1,4 +1,4 @@
 [core]
     remote = lokalny
 ['remote "lokalny"']
-    url = C:\dvc-store
+    url = /mnt/c/dvc-store
