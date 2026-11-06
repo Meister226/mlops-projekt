@@ -1,9 +1,9 @@
 import optuna
 from optuna_integration.mlflow import MLflowCallback
 
-from src.data import load_data, split_data
-from src.evaluate import evaluate_model
-from src.train import train_model
+from src.mlops_projekt.data import load_data, split_data
+from src.mlops_projekt.evaluate import evaluate_model
+from src.mlops_projekt.train import train_model
 
 STORAGE = "sqlite:///optuna.db"
 STUDY_NAME = "klasyfikator-nowotworow"

@@ -2,8 +2,8 @@ import mlflow
 import optuna
 from sklearn.ensemble import RandomForestClassifier
 
-from src.data import load_data, split_data
-from src.evaluate import evaluate_model
+from src.mlops_projekt.data import load_data, split_data
+from src.mlops_projekt.evaluate import evaluate_model
 
 STORAGE = "sqlite:///optuna.db"
 STUDY_NAME = "klasyfikator-nowotworow"

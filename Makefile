@@ -4,29 +4,32 @@ KATALOGI = src/ tests/
 .PHONY: install data lint format test tune train clean all
 
 install:
-    pip install -r requirements.txt
+	uv sync
 
 data:
-    dvc pull
+	uv run dvc pull
 
 lint:
-    ruff check $(KATALOGI)
+	uv run ruff check $(KATALOGI)
 
 format:
-    ruff format $(KATALOGI)
-    ruff check --fix $(KATALOGI)
+	uv run ruff format $(KATALOGI)
+	uv run ruff check --fix $(KATALOGI)
 
 test:
-    pytest tests/ -v
+	uv run pytest tests/ -v
 
 tune: data
-    $(PYTHON) -m src.tune
+	uv run -m mlops_projekt.tune
 
 train: data
-    $(PYTHON) -m src.train
+	uv run -m mlops_projekt.train
 
 clean:
-    find . -type d -name "__pycache__" -exec rm -rf {} +
-    rm -rf .pytest_cache .ruff_cache
+	find . -type d -name "__pycache__" -exec rm -rf {} +
+	rm -rf .pytest_cache .ruff_cache
+
+serve:
+	uv run uvicorn mlops_projekt.api:app --host 127.0.0.1 --port 8000 --reload
 
 all: lint test train
